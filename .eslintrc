@@ -1,0 +1,13 @@
+{
+  "plugins": ["eslint-plugin-svelte3"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "semi": "error"
+  }
+}
