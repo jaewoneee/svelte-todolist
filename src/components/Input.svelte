@@ -26,18 +26,24 @@ button {
 <script>
 import { todoItems } from '../store/todos'
 
-let todo = ''
+let todoTitle = ''
+let uid = 0
 
 const addNewTodoItem = () => {
-  todo.length !== 0
+  const todo = { id: uid++, title: todoTitle, done: false }
+  todoTitle.length !== 0
     ? ($todoItems = [...$todoItems, todo])
     : alert('write something!')
-  todo = ''
+  todoTitle = ''
 }
 </script>
 
 <div class="input-box">
-  <input type="text" bind:value="{todo}" placeholder="Add your new todo" />
+  <input
+    type="text"
+    bind:value="{todoTitle}"
+    on:keydown="{(e) => e.key === 'Enter' && addNewTodoItem()}"
+    placeholder="Add your new todo" />
   <button on:click="{() => addNewTodoItem()}" aria-label="add todo item"
   ></button>
 </div>

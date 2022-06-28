@@ -52,20 +52,30 @@ import { fly } from 'svelte/transition'
 import { todoItems } from '../store/todos'
 
 const removeTotoItem = (index) => {
-  console.log(index)
-  return ($todoItems = $todoItems.filter((n, i) => i !== index))
+  $todoItems = $todoItems.filter((item, i) => i !== index)
+}
+
+const checkTodoItem = (index) => {
+  const target = $todoItems.find((n, i) => i === index)
+  target.done = !target.done
+
+  $todoItems[index] = target
+  console.log(target, $todoItems)
 }
 </script>
 
 <div class="list-box">
   <ul>
-    {#each $todoItems as todo, i}
+    {#each $todoItems as todo, i (todo.id)}
       <li
         in:fly="{{ y: 100, duration: 500 }}"
         out:fly="{{ y: 100, duration: 500 }}">
-        <input type="checkbox" id="{`check${i + 1}`}" />
-        <label for="{`check${i + 1}`}"></label>
-        <p>{todo}</p>
+        <input
+          type="checkbox"
+          id="{todo.id}"
+          on:change="{() => checkTodoItem(todo.id)}" />
+        <label for="{todo.id}"></label>
+        <p>{todo.title}</p>
         <button
           aria-label="remove this todo item"
           on:click="{() => removeTotoItem(i)}"></button>
