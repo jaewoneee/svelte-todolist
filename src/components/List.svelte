@@ -4,6 +4,14 @@
   height: 100%;
   overflow-y: auto;
 }
+.list-box::-webkit-scrollbar {
+  height: 2px;
+  background-color: transparent;
+}
+.list-box::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  background-color: var(--point-color);
+}
 ul {
   width: fit-content;
   height: 100%;
@@ -12,6 +20,7 @@ ul {
   flex-wrap: nowrap;
   gap: 1rem;
   margin-right: 4%;
+  align-items: center;
 }
 li {
   width: 200px;
@@ -38,7 +47,12 @@ p {
   font-weight: 600;
   color: #333;
 }
-
+.empty-box {
+  font-size: 2rem;
+}
+.empty-box span {
+  color: var(--sub-color);
+}
 button {
   background: url(../assets/icon/trash.svg) center no-repeat;
   background-size: contain;
@@ -68,8 +82,8 @@ const checkTodoItem = (index) => {
 
 <div class="list-box">
   <ul>
-    {#if $todoItems.length > 0}
-      {#each $todoItems as todo, i (todo.title)}
+    {#if $todoItems !== []}
+      {#each $todoItems as todo, i (todo.id)}
         <li
           class="{todo.done && 'completed'}"
           in:fly="{{ y: 100, duration: 500 }}"
@@ -86,7 +100,7 @@ const checkTodoItem = (index) => {
             on:click="{() => removeTotoItem(i)}"></button>
         </li>
       {:else}
-        <p>hello</p>
+        <p class="empty-box">What are you going <span>to</span> do?</p>
       {/each}
     {/if}
   </ul>

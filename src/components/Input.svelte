@@ -27,9 +27,10 @@ button {
 import { todoItems } from '../store/todos'
 
 let todoTitle = ''
+let uuid = $todoItems[$todoItems.length - 1]?.id + 1 || 1
 
 const addNewTodoItem = () => {
-  const todo = { title: todoTitle, done: false }
+  const todo = { id: uuid++, title: todoTitle, done: false }
   if (todoTitle.length !== 0) {
     $todoItems = [...$todoItems, todo]
     localStorage.setItem('todos', JSON.stringify($todoItems))
