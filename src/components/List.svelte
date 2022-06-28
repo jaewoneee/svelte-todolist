@@ -27,7 +27,9 @@ li {
 li:hover {
   border: 1px solid var(--point-color);
 }
-
+li.completed {
+  background-color: rgba(51, 51, 51, 0.115);
+}
 label {
   margin-right: 8px;
 }
@@ -53,33 +55,39 @@ import { todoItems } from '../store/todos'
 
 const removeTotoItem = (index) => {
   $todoItems = $todoItems.filter((item, i) => i !== index)
+  localStorage.setItem('todos', JSON.stringify($todoItems))
 }
 
 const checkTodoItem = (index) => {
   const target = $todoItems.find((n, i) => i === index)
   target.done = !target.done
-
   $todoItems[index] = target
-  console.log(target, $todoItems)
+  localStorage.setItem('todos', JSON.stringify($todoItems))
 }
 </script>
 
 <div class="list-box">
   <ul>
-    {#each $todoItems as todo, i (todo.id)}
-      <li
-        in:fly="{{ y: 100, duration: 500 }}"
-        out:fly="{{ y: 100, duration: 500 }}">
-        <input
-          type="checkbox"
-          id="{todo.id}"
-          on:change="{() => checkTodoItem(todo.id)}" />
-        <label for="{todo.id}"></label>
-        <p>{todo.title}</p>
-        <button
-          aria-label="remove this todo item"
-          on:click="{() => removeTotoItem(i)}"></button>
-      </li>
-    {/each}
+    {#if $todoItems.length > 0}
+      {#each $todoItems as todo, i (todo.title)}
+        <li
+          class="{todo.done && 'completed'}"
+          in:fly="{{ y: 100, duration: 500 }}"
+          out:fly="{{ y: 100, duration: 500 }}">
+          <input
+            type="checkbox"
+            id="{`todo${i + 1}`}"
+            checked="{todo.done}"
+            on:change="{() => checkTodoItem(i)}" />
+          <label for="{`todo${i + 1}`}"></label>
+          <p>{todo.title}</p>
+          <button
+            aria-label="remove this todo item"
+            on:click="{() => removeTotoItem(i)}"></button>
+        </li>
+      {:else}
+        <p>hello</p>
+      {/each}
+    {/if}
   </ul>
 </div>

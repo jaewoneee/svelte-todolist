@@ -1,3 +1,4 @@
 import { writable } from 'svelte/store'
 
-export const todoItems = writable([])
+const storedTodos = JSON.parse(localStorage.getItem('todos'))
+export const todoItems = storedTodos ? writable([...storedTodos]) : writable([])
