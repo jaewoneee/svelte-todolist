@@ -1,37 +1,37 @@
 @font-face {
   font-family: Montserrat;
   font-weight: 300;
-  src: url(./assets/Montserrat-Light.4b05fd0b.woff2) format('woff2');
+  src: url(./Montserrat-Light.4b05fd0b.woff2) format('woff2');
   font-display: block;
 }
 @font-face {
   font-family: Montserrat;
   font-weight: 400;
-  src: url(./assets/Montserrat-Regular.10d7c5fe.woff2) format('woff2');
+  src: url(./Montserrat-Regular.10d7c5fe.woff2) format('woff2');
   font-display: block;
 }
 @font-face {
   font-family: Montserrat;
   font-weight: 500;
-  src: url(./assets/Montserrat-Medium.756f20bf.woff2) format('woff2');
+  src: url(./Montserrat-Medium.756f20bf.woff2) format('woff2');
   font-display: block;
 }
 @font-face {
   font-family: Montserrat;
   font-weight: 600;
-  src: url(./assets/Montserrat-SemiBold.8dcd39f9.woff2) format('woff2');
+  src: url(./Montserrat-SemiBold.8dcd39f9.woff2) format('woff2');
   font-display: block;
 }
 @font-face {
   font-family: Montserrat;
   font-weight: 700;
-  src: url(./assets/Montserrat-Bold.52ae145c.woff2) format('woff2');
+  src: url(./Montserrat-Bold.52ae145c.woff2) format('woff2');
   font-display: block;
 }
 @font-face {
   font-family: Montserrat;
   font-weight: 800;
-  src: url(./assets/Montserrat-ExtraBold.3dc27f5b.woff2) format('woff2');
+  src: url(./Montserrat-ExtraBold.3dc27f5b.woff2) format('woff2');
   font-display: block;
 }
 :root {
@@ -86,7 +86,7 @@ input[type='checkbox'] + label {
   border: 2px solid var(--point-color);
 }
 input[type='checkbox']:checked + label {
-  background: url(./assets/check.747423e9.svg) center no-repeat;
+  background: url(./check.747423e9.svg) center no-repeat;
   background-color: var(--point-color);
 }
 h1.svelte-1nrw0qn {
@@ -123,7 +123,7 @@ button.svelte-xjcp3 {
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
-  background: url(./assets/plus.ccd5eb4f.svg) center no-repeat;
+  background: url(./plus.ccd5eb4f.svg) center no-repeat;
 }
 .list-box.svelte-4pg2rt.svelte-4pg2rt {
   width: 100%;
@@ -179,7 +179,7 @@ p.svelte-4pg2rt.svelte-4pg2rt {
   color: var(--sub-color);
 }
 button.svelte-4pg2rt.svelte-4pg2rt {
-  background: url(./assets/trash.6775baf0.svg) center no-repeat;
+  background: url(./trash.6775baf0.svg) center no-repeat;
   background-size: contain;
   width: 20px;
   height: 20px;
